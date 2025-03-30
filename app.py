@@ -26,7 +26,7 @@ app.add_middleware(
 )
 
 URL = "http://aiproxy.sanand.workers.dev/openai/v1"
-APIPROXY_TOKEN = os.environ.get("APIPROXY_TOKEN")
+APIPROXY_TOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6IjIyZjMwMDE3NzdAZHMuc3R1ZHkuaWl0bS5hYy5pbiJ9.VPs-KQf-9Vd_qqpOkRCuznBluJnTlUgviGd-Xm4E8gY"
 
 HEADERS = {
     "Authorization": f"Bearer {APIPROXY_TOKEN}",
@@ -64,6 +64,10 @@ async def save_uploaded_file(uploaded_file: UploadFile) -> str:
         await f.write(await uploaded_file.read())
     return file_path, temp_dir
 
+@app.get("/")
+def home():
+    return "Hello, World!"
+    
 @app.post("/api")
 async def llm_assignment(question: str = Form(...), file: UploadFile = File(None)):
     try:
