@@ -64,10 +64,7 @@ async def save_uploaded_file(uploaded_file: UploadFile) -> str:
         await f.write(await uploaded_file.read())
     return file_path, temp_dir
 
-@app.get("/")
-def home():
-    return "Hello, World!"
-    
+   
 @app.post("/api")
 async def llm_assignment(question: str = Form(...), file: UploadFile = File(None)):
     try:
