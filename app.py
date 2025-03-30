@@ -26,7 +26,7 @@ app.add_middleware(
 )
 
 URL = "http://aiproxy.sanand.workers.dev/openai/v1"
-APIPROXY_TOKEN = os.environ.get("API_KEY")
+APIPROXY_TOKEN = os.environ.get("APIPROXY_TOKEN")
 
 HEADERS = {
     "Authorization": f"Bearer {APIPROXY_TOKEN}",
